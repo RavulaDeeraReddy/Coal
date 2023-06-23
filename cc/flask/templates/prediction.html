@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/prediction.css') }}">
+    <script defer src="../static/js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#">COAL CLASSIFICATION</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="prediction.html">Classify</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="input">
+            <img src="../static/pics/download.jpg" alt="image">
+            <form id="form" action="/result" method="post"  enctype="multipart/form-data">
+                <input type="file" id="imageupload"  name="image" accept="image/*" class="input-image">
+                <input type="submit" class="submitbtn" onclick="return validateForm()">
+            </form>
+        </div>
+        <h3>
+            THE PREDICTION IS : {{prediction}}
+        </h3>
+    </div>
+    <script>
+        function validateForm() {
+            var fileInput = document.getElementById('imageupload');
+            
+            if (fileInput.files.length === 0) {
+              alert('File not uploaded!');
+              return false; // Prevent form submission
+            }
+            
+            return true; // Proceed with form submission
+        }
+    </script>
+</body>
+</html>
